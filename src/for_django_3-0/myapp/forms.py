@@ -1,5 +1,14 @@
+from django.forms import ModelForm
 from django import forms
+from .models import *
 
 
-class DocumentForm(forms.Form):
-    docfile = forms.FileField(label='Select a file')
+class DocumentForm(ModelForm):
+    class Meta:
+        model = Document
+        fields = '__all__'
+
+        widgets={
+            'docfile' : forms.ClearableFileInput()
+        }
+        
